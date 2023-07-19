@@ -41,6 +41,17 @@ services:
         ports:
             - "3306:3306"
 
+    phpmyadmin:
+        image: phpmyadmin
+        restart: always
+        expose:
+            - "40001"
+        ports:
+            - "40001:80"
+        environment:
+            - PMA_HOST=mariadb
+            - PMA_PORT=3306 
+
     redis:
         image: "redis:7.0.11-alpine"
         environment:
