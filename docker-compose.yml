@@ -30,9 +30,9 @@ services:
         working_dir: /app
         volumes:
             - ".:/app"
-            - "./mariadb/data:/var/lib/mysql"
-            - "./mariadb/logs:/var/log/mysql"
-            - "./mariadb/conf:/etc/mysql"
+            - "./docker/mariadb/data:/var/lib/mysql"
+            - "./docker/mariadb/logs:/var/log/mysql"
+            - "./docker/mariadb/conf:/etc/mysql"
         environment:
             MARIADB_ROOT_PASSWORD: "${MARIADB_ROOT_PASSWORD}"
             MARIADB_DATABASE: "${MARIADB_DATABASE}"
@@ -42,15 +42,19 @@ services:
             - "3306:3306"
 
     phpmyadmin:
-        image: phpmyadmin
-        restart: always
-        expose:
-            - "40001"
+        image: phpmyadmin/phpmyadmin:latest
+        volumes:
+            - "./docker/phpmyadmin/sessions:/sessions"
+            - "./docker/phpmyadmin/config.inc.php:/www/config.inc.php"
         ports:
-            - "40001:80"
+            - 8000:80
         environment:
-            - PMA_HOST=mariadb
-            - PMA_PORT=3306 
+            PMA_HOST: mariadb
+            PMA_PORT: 3306
+            PMA_DB_ENGINE: mariadb
+            PMA_DB: "${MARIADB_DATABASE}"
+        depends_on:
+            - mariadb
 
     redis:
         image: "redis:7.0.11-alpine"
