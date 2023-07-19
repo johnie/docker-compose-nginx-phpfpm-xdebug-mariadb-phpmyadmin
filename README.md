@@ -1,4 +1,4 @@
-# Docker compose PHP FPM 8.2.8, Xdebug 3.2.1, Nginx 1.24.0, Redis 7.0.11 and MariaDB 10.11.3
+# Docker compose PHP FPM 8.2.8, Xdebug 3.2.1, Nginx 1.24.0, Redis 7.0.11, MariaDB 10.11.3 and phpMyAdmin
 
 ![docker](https://img.shields.io/badge/Docker-compose-brightgreen.svg) ![php](https://img.shields.io/badge/PHP_FPM-8.2.8-brightgreen.svg) ![xdebug](https://img.shields.io/badge/Xdebug-3.2.1-brightgreen.svg) ![nginx](https://img.shields.io/badge/nginx-1.24.0-brightgreen.svg) ![redis](https://img.shields.io/badge/Redis-7.0.11-brightgreen.svg) ![mariadb](https://img.shields.io/badge/MariaDB-10.11.3-brightgreen.svg)
 
